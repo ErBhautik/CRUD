@@ -1,0 +1,55 @@
+﻿@model IEnumerable<CRUD.Models.ToDoTaskViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>To Do Task</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsCompleted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsEdited)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsCompleted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsEdited)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {  TaskId=item.TaskId  }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.TaskId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
